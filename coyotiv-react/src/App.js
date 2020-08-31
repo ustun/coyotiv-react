@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function HelloWorld(params) {
+  return <div>Hello</div>
 }
 
-export default App;
+function useCounter() {
+  const [count, setCount] = React.useState(0)
+
+  function increment() {
+    setCount(count + 1)
+  }
+
+  return { count, increment }
+}
+
+function App() {
+  // const count = 0
+
+  const { count, increment } = useCounter()
+
+  // JSX
+
+  // React.createElement("div", )
+  return (
+    <div className="App">
+      Hello Coyotiv
+      <HelloWorld></HelloWorld>
+      Count is {count}
+      <br />
+      <button onClick={(e) => increment()}>Increment</button>
+    </div>
+  )
+}
+
+export default App

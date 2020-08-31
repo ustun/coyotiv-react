@@ -21,7 +21,41 @@ describe('redux', () => {
   })
 })
 
-describe('redux toolkit test', () => {
+describe('oop goodness', () => {
+  test('should work better', () => {
+    const counterSlicer = createSlice({
+      name: 'counter',
+
+      initialState: { value: 0 }, // constructor
+
+      reducers: {
+        // methods analogue
+
+        // IMMER
+        increment(state, action) {
+          state.value++
+          return state
+        },
+
+        //        return {value: state.value + 1}
+
+        decrement(state) {
+          return { value: state.value - 1 }
+        },
+      },
+    })
+
+    const store = createStore(counterSlicer.reducer)
+
+    expect(store.getState()).toBe({ value: 0 })
+
+    store.dispatch(counterSlicer.actions.increment())
+
+    expect(store.getState()).toBe({ value: 1 })
+  })
+})
+
+describe('redux toolkit test2', () => {
   function createSliceWithId(id) {
     const counterSlice = createSlice({
       name: 'counter' + id,
